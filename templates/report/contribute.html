@@ -1,86 +1,35 @@
 <!DOCTYPE html>
-{# 导入静态资源 #}
 {% load static %}
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>客户贡献分析</title>
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="{% static 'lib/layui-v2.6.3/css/layui.css' %}" media="all">
-  <link rel="stylesheet" href="{% static 'css/public.css' %}" media="all">
+    <meta charset="UTF-8">
+    <title>客户贡献分析</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/jquery-easyui-1.3.3/themes/default/easyui.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/jquery-easyui-1.3.3/themes/icon.css' %}">
+    <script type="text/javascript" src="{% static '/jquery-easyui-1.3.3/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/jquery-easyui-1.3.3/jquery.easyui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static '/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery.cookie.js' %}"></script>
 </head>
 <body>
-{# csrf 保护 #}
-{% csrf_token %}
-<form class="layui-form">
-  <blockquote class="layui-elem-quote quoteBox">
-    <form class="layui-form">
-      <div class="layui-inline">
-        <div class="layui-input-inline">
-          <input type="text" name="customerName" class="layui-input
-					searchVal" placeholder="客户名"/>
-        </div>
-        <div class="layui-input-inline">
-          <select name="type" id="type">
-            <option value="0">请选择金额区间</option>
-            <option value="1">0-1000</option>
-            <option value="2">1000-3000</option>
-            <option value="3">3000-5000</option>
-            <option value="4">5000以上</option>
-          </select>
-        </div>
-        <a class="layui-btn search_btn" data-type="reload"><i
-                class="layui-icon">&#xe615;</i> 搜索</a>
-      </div>
-    </form>
-  </blockquote>
+<table id="dg" class="easyui-datagrid" title="客户贡献分析"
+       data-options="rownumbers:true,pagination:true,fit:true,
+			    pageList:[10,15,20,30,40,50],toolbar: '#tb',
+                url:'{% url 'report:select_contirbute' %}',method:'get'">
+    <thead>
+    <tr>
+        <th data-options="field:'id',hidden:true"></th>
+        <th data-options="field:'name',align:'center',width:900">客户名称</th>
+        <th data-options="field:'sum',align:'center',width:210,formatter:formatter_sum">订单总金额(元)</th>
+    </tr>
+    </thead>
+</table>
 
-  <table id="contriList" class="layui-table" lay-filter="contris"></table>
-
-
-</form>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" charset="utf-8"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" charset="utf-8"></script>
-<script src="{% static 'lib/layui-v2.6.3/layui.js' %}" charset="utf-8"></script>
-<script>
-  layui.use(['table', 'layer', "form", "laydate"], function () {
-    var layer = parent.layer === undefined ? layui.layer : top.layer,
-        $ = layui.jquery,
-        table = layui.table;
-
-    //用户列表展示
-    var tableIns = table.render({
-      elem: '#contriList',
-      url: '/report/contribute/',
-      cellMinWidth: 95,
-      page: true,
-      height: "full-125",
-      limits: [10, 15, 20, 25],
-      limit: 10,
-      id: "customerContriListTable",
-      cols: [[
-        {type: "checkbox", fixed: "left", width: 50},
-        {field: 'name', title: '客户名', minWidth: 50, align: "center"},
-        {field: 'sum', title: '总金额(￥)', minWidth: 50, align: "center"}
-      ]]
-    });
-
-    // 多条件搜索
-    $(".search_btn").on("click", function () {
-      table.reload("customerContriListTable", {
-        page: {
-          curr: 1
-        },
-        where: {
-          customerName: $("input[name='customerName']").val(), // 客户名
-          type: $("#type").val() // 金额区间
-        }
-      })
-    });
-
-  });
-</script>
+{# 工具栏 #}
+<div id="tb">
+    &nbsp;&nbsp;客户名称&nbsp;&nbsp;<input id="s_name" onkeydown="if (event.keyCode==13) select_contribute();"/>
+    <a onclick="select_contribute();" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查询</a>
+</div>
+<script type="text/javascript" src="{% static '/js/report/contribute.js' %}"></script>
 </body>
 </html>
