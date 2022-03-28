@@ -87,7 +87,7 @@ function reg_check_email() {
     // 发送ajax请求验证用户名唯一
     $.ajax({
         'type': 'POST',
-        'url': '/system/unique_username/',
+        'url': '/system/unique_email/',
         'async': false,
         'data': {
             'csrfmiddlewaretoken': $.cookie('csrftoken'),
@@ -144,6 +144,12 @@ $('#reg_password').on('blur', reg_check_password);
 
 // 重复密码 获取密码的值进行比较
 function reg_check_password2() {
+    // 密码若不正确则显示密码不正确
+    var flag = reg_check_password()
+    if (!flag) {
+        return false
+    }
+
     // 获取密码
     var pwd = $('#reg_password').val().trim();
     // 获取重复密码
@@ -286,16 +292,13 @@ function login_user() {
             // 如果是200 正常显示
             if (200 == result.code) {
                 // 如果用户选择了记住密码
-                if (!(undefined == result.login_username_cookie || null == result.login_username_cookie)) {
-                    // 设置cookuie，有效时间为15天
-                    $.cookie('login_username_cookie', result.login_username_cookie,
-                        {'expires': 15, 'path': '/', 'domain': 'crm.com'});
-
-                    $.cookie('login_password_cookie', result.login_password_cookie,
-                        {'expires': 15, 'path': '/', 'domain': 'crm.com'});
+                if (!(undefined == result.login_cookie || null == result.login_cookie)) {
+                    // 设置cookie，有效时间为15天
+                    $.cookie('login_cookie', result.login_cookie,
+                        {'expires': 15, 'path': '/'});
                 }
 
-                window.location.href = '/index/'
+                window.location.href = '/system/index/'
             }
         },
         'error': function (result) {
@@ -303,30 +306,24 @@ function login_user() {
         }
     });
 }
+
 $('#login_btn').on('click', login_user);
 
 // 进入页面就执行的方法
 $(function () {
     // 获取login_cookie，赋值到登录框
-    var username = $.cookie('login_username_cookie');
-    var password = $.cookie('login_password_cookie');
+    var value = $.cookie('login_cookie');
 
     // 判断是否存在cookie
-    if (!(undefined == username || null == username)) {
+    if (!(undefined == value || null == value)) {
         // base64解密cookie
-        username = $.base64.decode(username);
+        value = $.base64.decode(value);
         // 赋值到登录框
-        $('#login_username').val(username);
-    }
-
-    if (!(undefined == password || null == password)) {
-        // base64解密cookie
-        password = $.base64.decode(password);
-        // 赋值到登录框
-        $('#login_password').val(password);
+        $('#login_username').val(value.split('&')[0]);
+        $('#login_password').val(value.split('&')[1]);
     }
 
     // 实现免登陆，判断session
-    // login_user()
+    //     login_user()
 });
 // ----------------------------------登录---------------end---------------------

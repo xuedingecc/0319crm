@@ -2,6 +2,11 @@ from django.db import models
 from datetime import datetime
 
 
+class ModelManager(models.Manager):
+    def get_queryset(self):
+        return super(ModelManager, self).get_queryset().filter(is_valid=1)
+
+
 class User(models.Model):
     username = models.CharField(max_length=20, null=True, db_column='user_name')
     password = models.CharField(max_length=100)
@@ -14,3 +19,8 @@ class User(models.Model):
     code = models.CharField(max_length=255, null=True)
     status = models.BooleanField(max_length=1)
     timestamp = models.CharField(max_length=255, null=True)
+
+    objects = ModelManager()
+
+    class Meta(object):
+        db_table = 't_user'

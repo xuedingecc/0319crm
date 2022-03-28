@@ -26,7 +26,7 @@
         <div title="首页" data-options="iconCls:'icon-home'">
             <div align="center" style="padding-top: 100px">
                 <font color="red" size="10">欢迎回来</font>
-                {{ request.session.user_permission }}
+{#                {{ request.session.user_permission }}#}
             </div>
         </div>
     </div>
@@ -35,91 +35,91 @@
 <div region="west" style="width: 200px" title="导航菜单" split="true">
     <div class="easyui-accordion" data-options="fit:true,border:false">
 
-        {% if '10' in request.session.user_permission %}
+{#        {% if '10' in request.session.user_permission %}#}
         <div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
-            {% if '1010' in request.session.user_permission %}
-            <a href="javascript:openTab('营销机会管理', '{% url 'sales:sale_chance_index' %}','icon-yxjhgl')" class="easyui-linkbutton"
+{#            {% if '1010' in request.session.user_permission %}#}
+            <a href=" " class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">营销机会管理</a>
-            {% endif %}
-            {% if '1020' in request.session.user_permission %}
-            <a href="javascript:openTab('客户开发计划','{% url 'sales:cus_dev_plan_index' %}','icon-khkfjh')" class="easyui-linkbutton"
+{#            {% endif %}#}
+{#            {% if '1020' in request.session.user_permission %}#}
+            <a href=" " class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">客户开发计划</a>
-            {% endif %}
+{#            {% endif %}#}
         </div>
-        {% endif %}
+{#        {% endif %}#}
 
-        {% if '20' in request.session.user_permission %}
+{#        {% if '20' in request.session.user_permission %}#}
         <div title="客户管理" data-options="iconCls:'icon-khgl'" style="padding:10px;">
-            <a href="javascript:openTab('客户信息管理','{% url 'customer:customer_index' %}','icon-khxxgl')" class="easyui-linkbutton"
+            <a href="javascript:openTab('客户信息管理',' ','icon-khxxgl')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>
-            <a href="javascript:openTab('客户流失管理','{% url 'customer:loss_index' %}','icon-khlsgl')" class="easyui-linkbutton"
+            <a href="javascript:openTab('客户流失管理',' ','icon-khlsgl')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">客户流失管理</a>
         </div>
-        {% endif %}
+{#        {% endif %}#}
 
-        {% if '30' in request.session.user_permission %}
+{#        {% if '30' in request.session.user_permission %}#}
         <div title="服务管理" data-options="iconCls:'icon-fwgl'" style="padding:10px">
-            {% if '3010' in request.session.user_permission %}
-            <a href="javascript:openTab('服务创建','{% url 'serve:serve' 'index' %}','icon-fwcj')" class="easyui-linkbutton"
+{#            {% if '3010' in request.session.user_permission %}#}
+            <a href="javascript:openTab('服务创建',' ','icon-fwcj')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">服务创建</a>
-            {% endif %}
-            <a href="javascript:openTab('服务分配','{% url 'serve:serve' 'assign' %}','icon-fwfp')" class="easyui-linkbutton"
+{#            {% endif %}#}
+            <a href="javascript:openTab('服务分配',' ','icon-fwfp')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-fwfp'" style="width: 150px;">服务分配</a>
-            <a href="javascript:openTab('服务处理','{% url 'serve:serve' 'handler' %}','icon-fwcl')" class="easyui-linkbutton"
+            <a href="javascript:openTab('服务处理',' ','icon-fwcl')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-fwcl'" style="width: 150px;">服务处理</a>
-            <a href="javascript:openTab('服务反馈','{% url 'serve:serve' 'feedback' %}','icon-fwfk')" class="easyui-linkbutton"
+            <a href="javascript:openTab('服务反馈',' ','icon-fwfk')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-fwfk'" style="width: 150px;">服务反馈</a>
-            <a href="javascript:openTab('服务归档','{% url 'serve:serve' 'file' %}','icon-fwgd')" class="easyui-linkbutton"
+            <a href="javascript:openTab('服务归档',' ','icon-fwgd')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-fwgd'" style="width: 150px;">服务归档</a>
         </div>
-        {% endif %}
+{#        {% endif %}#}
 
-        {% if '40' in request.session.user_permission %}
+{#        {% if '40' in request.session.user_permission %}#}
         <div title="统计报表" data-options="iconCls:'icon-tjbb'" style="padding:10px">
-            <a href="javascript:openTab('客户贡献分析','{% url 'report:contirbute_index' %}','icon-khgxfx')" class="easyui-linkbutton"
+            <a href="javascript:openTab('客户贡献分析',' ','icon-khgxfx')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khgxfx'" style="width: 150px;">客户贡献分析</a>
-            <a href="javascript:openTab('客户构成分析','{% url 'report:composition_index' %}','icon-khgcfx')" class="easyui-linkbutton"
+            <a href="javascript:openTab('客户构成分析',' ','icon-khgcfx')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khgcfx'" style="width: 150px;">客户构成分析</a>
-            <a href="javascript:openTab('客户服务分析','{% url 'report:serve_index' %}','icon-khfwfx')" class="easyui-linkbutton"
+            <a href="javascript:openTab('客户服务分析',' ','icon-khfwfx')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khfwfx'" style="width: 150px;">客户服务分析</a>
-            <a href="javascript:openTab('客户流失分析','{% url 'report:loss_index' %}','icon-khlsfx')" class="easyui-linkbutton"
+            <a href="javascript:openTab('客户流失分析',' ','icon-khlsfx')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-khlsfx'" style="width: 150px;">客户流失分析</a>
         </div>
-        {% endif %}
+{#        {% endif %}#}
 
-        {% if '50' in request.session.user_permission %}
+{#        {% if '50' in request.session.user_permission %}#}
         <div title="基础数据管理" data-options="iconCls:'icon-jcsjgl'" style="padding:10px">
-            <a href="javascript:openTab('数据字典管理','{% url 'base:datadic_index' %}','icon-sjzdgl')" class="easyui-linkbutton"
+            <a href="javascript:openTab('数据字典管理',' ','icon-sjzdgl')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 150px;">数据字典管理</a>
-            <a href="javascript:openTab('产品信息查询','{% url 'base:product_index' %}','icon-cpxxgl')" class="easyui-linkbutton"
+            <a href="javascript:openTab('产品信息查询',' ','icon-cpxxgl')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
         </div>
-        {% endif %}
+{#        {% endif %}#}
 
-        {% if '60' in request.session.user_permission %}
+{#        {% if '60' in request.session.user_permission %}#}
         <div title="系统管理" data-options="iconCls:'icon-item'" style="padding:10px">
-            {% if '6010' in request.session.user_permission %}
-            <a href="javascript:openTab('用户管理','{% url 'system:user_index' %}','icon-user')" class="easyui-linkbutton"
+{#            {% if '6010' in request.session.user_permission %}#}
+            <a href="javascript:openTab('用户管理',' ','icon-user')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户管理</a>
-            {% endif %}
-            {% if '6020' in request.session.user_permission %}
-            <a href="javascript:openTab('角色管理','{% url 'system:roel_index' %}','icon-user')" class="easyui-linkbutton"
+{#            {% endif %}#}
+{#            {% if '6020' in request.session.user_permission %}#}
+            <a href="javascript:openTab('角色管理',' ','icon-user')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">角色管理</a>
-            {% endif %}
-            {% if '6030' in request.session.user_permission %}
-            <a href="javascript:openTab('模块管理','{% url 'system:module_index' %}','icon-user')" class="easyui-linkbutton"
+{#            {% endif %}#}
+{#            {% if '6030' in request.session.user_permission %}#}
+            <a href="javascript:openTab('模块管理',' ','icon-user')" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">模块管理</a>
-            {% endif %}
-            {% if '6040' in request.session.user_permission %}
+{#            {% endif %}#}
+{#            {% if '6040' in request.session.user_permission %}#}
             <a href="javascript:open_update_password_dialog('{{ request.session.username_session }}');" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
-            {% endif %}
-            {% if '6050' in request.session.user_permission %}
+{#            {% endif %}#}
+{#            {% if '6050' in request.session.user_permission %}#}
             <a href="javascript:logout();" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'"
                style="width: 150px;">安全退出</a>
-            {% endif %}
+{#            {% endif %}#}
         </div>
-        {% endif %}
+{#        {% endif %}#}
 
     </div>
 </div>
