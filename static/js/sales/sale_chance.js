@@ -93,6 +93,10 @@ $('#sales_sale_chance_create_dialog').dialog({
 
 // 打开营销机会对话框
 function open_sale_chance_dialog() {
+    $('#customer_select').empty()
+    $('#linkman_select').empty()
+    $('#username_select').empty()
+
     // 发送ajax请求查询客户名称和联系人名称
     $.ajax({
         'type': 'GET',
@@ -185,6 +189,12 @@ function get_linkName() {
     });
 }
 
+
+// 获取指派人名称赋值给隐藏域
+function get_assignName() {
+    $('#assignMan_hidden').val($('#username_select').find("option:selected").text());
+}
+
 // 提交form表单
 function sub_create_sale_chance_form() {
     $('#sales_sale_chance_form').form('submit', {
@@ -249,6 +259,10 @@ $('#sales_sale_chance_update_dialog').dialog({
 
 // 打开修改营销机会对话框
 function open_sale_chance_update_dialog() {
+    $('#update_customer_select').empty()
+    $('#update_linkman_select').empty()
+    $('#update_username_select').empty()
+
     // 判断必须选择且只可以选择一条才能弹出对话框
     var ids = $('#dg').datagrid('getChecked');
 
@@ -286,8 +300,8 @@ function open_sale_chance_update_dialog() {
                 $('#update_description').val(result.sc.description);
 
                 customer_id = result.sc.customerId
-                linkman_id = result.sc.linkManId
-                user_id = result.sc.userId
+                linkman_id = result.sc.linkMan
+                user_id = result.sc.assignMan
             }
         }
     });
@@ -392,6 +406,9 @@ function get_update_linkName() {
 
 // 提交form表单
 function sub_update_sale_chance_form() {
+    // 给csrf_token隐藏域赋值
+    // $('#csrfmiddlewaretoken').val($.cookie('csrftoken'));
+
     $('#sales_sale_chance_update_form').form('submit', {
         url: '/sales/update_sale_chance/',
         success: function (result) {
@@ -443,6 +460,8 @@ function delete_sale_chance() {
                     sale_chance_ids += ids[i].id;
                 }
             }
+
+            console.log(ids)
 
             // 发送ajax删除数据
             $.ajax({

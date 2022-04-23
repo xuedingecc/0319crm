@@ -220,6 +220,7 @@ function delete_customer() {
                 },
                 'dataType': 'json',
                 'success': function (result) {
+                    // $('#dg').pagination('refresh');
                     // 显示提示信息
                     $.messager.show({
                         title: '提示',
@@ -262,7 +263,7 @@ function open_linkman_window() {
 // ------------------------------客户联系人管理-----------------end---------------------
 
 // ------------------------------客户交往记录管理----------------start--------------------
-// 打开客户联系人窗口
+// 打开客户交往记录管理
 function open_contact_window() {
     // 判断必须选择且只可以选择一条才能弹出对话框
     var ids = $('#dg').datagrid('getChecked');
@@ -284,7 +285,7 @@ function open_contact_window() {
 // ------------------------------客户交往记录管理-----------------end---------------------
 
 // ------------------------------客户历史订单管理----------------start--------------------
-// 打开客户联系人窗口
+// 打开客户历史订单管理
 function open_order_window() {
     // 判断必须选择且只可以选择一条才能弹出对话框
     var ids = $('#dg').datagrid('getChecked');

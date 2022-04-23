@@ -23,6 +23,12 @@ $('#grade').combobox({
     }
 });
 
+//格式化时间
+function formatter_datetime(value) {
+    if (undefined == value || null == value)
+        return '';
+    return value.replace('T', ' ');
+}
 
 // 打开添加模块对话框
 function open_module_create_dialgo() {
@@ -50,7 +56,7 @@ function open_module_update_dialgo() {
     // 如果不是根级菜单，显示父级菜单
     if (0 != row.grade) {
         $('#parent_tr').show();
-        select_module_by_grade(row.grade, row.parent);
+        select_module_by_grade(row.grade, row.parent_id);
     } else {
         $('#parent_tr').hide();
     }

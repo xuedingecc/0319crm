@@ -13,9 +13,9 @@
 <body>
 <div style="margin:5px 0;"></div>
 <table id="dg" class="easyui-datagrid" title="营销机会管理"
-       data-options="rownumbers:true,pagination:true,fit:true,
+       data-options="rownumbers:false,pagination:true,fit:true,
 			    pageList:[10,15,20,30,40,50],toolbar: '#tb',
-                url:'{% url 'sales:select_sale_chacne_list' %}',method:'post'">
+                url:'{% url 'sales:select_sale_chance_list' %}',method:'get'">
     <thead>
     <tr>
         <th data-options="field:'id',checkbox:true"></th>
@@ -35,15 +35,15 @@
 
 {# 工具栏 #}
 <div id="tb">
-    {% if '101001' in request.session.user_permission %}
+{#    {% if '101001' in request.session.user_permission %}#}
     <a onclick="open_sale_chance_dialog();" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
-    {% endif %}
-    {% if '101002' in request.session.user_permission %}
+{#    {% endif %}#}
+{#    {% if '101002' in request.session.user_permission %}#}
     <a onclick="open_sale_chance_update_dialog();" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a>
-    {% endif %}
-    {% if '101003' in request.session.user_permission %}
+{#    {% endif %}#}
+{#    {% if '101003' in request.session.user_permission %}#}
     <a onclick="delete_sale_chance();" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-    {% endif %}
+{#    {% endif %}#}
     <div>
         客户名称&nbsp;&nbsp;<input id="customerName" onkeydown="if (event.keyCode==13) select_params_sela_chance();"/>
         &nbsp;&nbsp;概要&nbsp;&nbsp;<input id="overview" onkeydown="if (event.keyCode==13) select_params_sela_chance();"/>
@@ -70,7 +70,7 @@
                 <td>
                     <input type="hidden" id="customerName_hidden" name="customerName_hidden">
                     <select onchange="get_customerName();" id="customer_select" name="customerId" style="width: 173px"></select>
-                    <span style="color: red;padding-left: 10px">*</span>
+                    <span style="color: #ff0000;padding-left: 10px">*</span>
                 </td>
                 <td style="padding-left: 70px;padding-right: 10px">机会来源</td>
                 <td><input name="chanceSource"/></td>
@@ -78,8 +78,8 @@
             <tr>
                 <td style="padding-right: 10px">联系人</td>
                 <td>
-                    <input type="hidden" id="linkManName_hidden" name="linkManName">
-                    <select onchange="get_linkName();" name="linkMan" id="linkman_select" style="width: 173px"></select>
+{#                    <input type="hidden" id="linkManName_hidden" name="linkManName">#}
+                    <select onchange="get_linkName();" name="linkManId" id="linkman_select" style="width: 173px"></select>
                 </td>
                 <td style="padding-left: 70px;padding-right: 10px">联系电话</td>
                 <td>
@@ -101,7 +101,8 @@
             <tr>
                 <td style="padding-right: 10px">指派给</td>
                 <td colspan="3">
-                    <select name="username" id="username_select" style="width: 173px"></select>
+{#                    <input type="hidden" id="assignMan_hidden" name="assignManName">#}
+                    <select name="assignMan" id="username_select" style="width: 173px"></select>
                 </td>
             </tr>
         </table>
@@ -111,6 +112,7 @@
 {# 修改营销机会对话框 #}
 <div id="sales_sale_chance_update_dialog" class="easyui-dialog">
     <form id="sales_sale_chance_update_form" method="post">
+{#        <input type="hidden" id="csrfmiddlewaretoken" name="csrfmiddlewaretoken"/>#}
         <input type="hidden" id="id" name="id"/>
         <table cellpadding="10px">
             <tr>

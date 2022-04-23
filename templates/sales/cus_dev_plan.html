@@ -15,7 +15,7 @@
 <table id="dg" class="easyui-datagrid" title="客户开发计划管理"
        data-options="rownumbers:true,pagination:true,fit:true,
 			    pageList:[10,15,20,30,40,50],toolbar: '#tb',
-                url:'{% url 'sales:select_sale_chacne_for_cus_dev_plan' %}',method:'post'">
+                url:'{% url 'sales:select_cus_dev_plan_list' %}',method:'get'">
     <thead>
     <tr>
         <th data-options="field:'id',checkbox:true"></th>

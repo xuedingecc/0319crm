@@ -15,7 +15,7 @@
 <input type="hidden" id="id" value="{{ c.id }}"/>
 {# 客户信息展示 #}
 <div id="p" class="easyui-panel" title="客户基本信息"
-     style="width:600px;height:150px;padding:10px;background:#fafafa;"
+     style="width:605px;height:150px;padding:10px;background:#fafafa;"
      data-options="iconCls:'icon-save',closable:true,
                 collapsible:true,minimizable:false,closable:false,maximizable:true">
     <br/><br/>
@@ -24,12 +24,12 @@
 </div>
 
 {# 联系人信息展示 #}
-<table id="tt" style="width:600px;height:333px" class="easyui-datagrid"
+<table id="tt" style="width:605px;height:400px" class="easyui-datagrid"
        title="联系人信息管理" toolbar="#tb"
        singleSelect="true">
     <thead>
     <tr>
-        <th field="id" width="30">编号</th>
+        <th field="id" width="37">编号</th>
         <th field="linkName" width="83" editor="{type:'validatebox',options:{required:true}}">客户联系人</th>
         <th field="sex" width="50" editor="{type:'combobox',
                     options:{

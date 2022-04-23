@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'system.apps.SystemConfig',
+    'sales.apps.SalesConfig',
+    'customer.apps.CustomerConfig',
+    'base.apps.BaseConfig',
+    'serve.apps.ServeConfig',
+    'report.apps.ReportConfig'
 ]
 
 MIDDLEWARE = [
@@ -47,11 +52,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'crm.common.CrmExceptionMiddleware',
+    'crm.common.CrmUrlMiddleware',
 ]
 
 ROOT_URLCONF = 'crm.urls'
 
-EMAIL_USE_SSL = True
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {
@@ -84,7 +91,8 @@ DATABASES = {
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'ATOMIC_REQUESTS': True
+        'ATOMIC_REQUESTS': True,
+        'OPTIONS': {'isolation_level': None},
     }
 }
 

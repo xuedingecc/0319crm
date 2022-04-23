@@ -30,7 +30,10 @@
     <thead>
     <tr>
         <th field="id" width="30">编号</th>
-        <th field="contactTime,formatter:formatter_datetime" width="150" editor="{type:'datebox',options:{required:true}}">交往时间</th>
+
+        <th field="contactTime" width="150" formatter="formatter_datetime"
+            editor="{type:'datebox',options:{required:true}}">交往时间
+        </th>
         <th field="address" width="180" editor="{type:'validatebox',options:{required:true}}">交往地址</th>
         <th field="overview" width="200" editor="{type:'validatebox',options:{required:true}}">概要</th>
     </tr>

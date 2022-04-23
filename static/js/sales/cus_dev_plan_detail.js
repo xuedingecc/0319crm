@@ -6,6 +6,7 @@ $('#tt').edatagrid({
     destroyUrl: '/sales/delete_cus_dev_plan/',  // 删除时提交url
     pagination: true,  // 显示分页工具栏
     rownumbers: true,  // 显示行号
+    // method:'get',
     width: 660,
     height: 400
 });

@@ -6,8 +6,8 @@ $('#tt').edatagrid({
     destroyUrl: '/customer/delete_linkman/',  // 删除时提交url
     pagination: true,  // 显示分页工具栏
     rownumbers: true,  // 显示行号
-    width: 600,
-    height: 333
+    width: 605,
+    height: 400
 });
 
 // 添加行

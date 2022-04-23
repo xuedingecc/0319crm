@@ -24,7 +24,7 @@
         <th data-options="field:'truename',width:200,align:'center'">真实姓名</th>
         <th data-options="field:'email',width:200">邮件</th>
         <th data-options="field:'phone',width:180">联系电话</th>
-        <th data-options="field:'create_date',width:180">创建时间</th>
+        <th data-options="field:'create_date',width:180,formatter:formatter_datetime">创建时间</th>
     </tr>
     </thead>
 </table>
@@ -81,7 +81,7 @@
                 </td>
                 <td style="padding-left: 70px;padding-right: 10px">角色</td>
                 <td>
-                    <!-- <input type="hidden" id="roles_hidden" name="roles_hidden"/> -->
+{#                    <input type="hidden" id="roles_hidden" name="roles_hidden"/>#}
                     <input id="roles" name="roles" class="easyui-combobox" data-options="valueField:'id',textField:'roleName',editable:false,
                         url:'{% url 'system:select_role_for_user' %}',method:'get',multiple:true">
                     <span style="color: red;padding-left: 10px">*</span>

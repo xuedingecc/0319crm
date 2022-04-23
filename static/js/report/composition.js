@@ -8,7 +8,8 @@ $(function () {
         'url': '/report/select_compostion/',
         'dataType': 'json',
         'success': function (result) {
-            // 获取数据进行赋值
+
+            //获取数据进行赋值
             for (i = 0; i < result.length; i++) {
                 categories.push(result[i].level);
                 data.push(result[i].amount);

@@ -26,7 +26,7 @@
 {# 联系人信息展示 #}
 <table id="tt" style="width:600px;height:333px" class="easyui-datagrid"
        title="历史订单" toolbar="#tb"
-       singleSelect="true">
+       singleSelect="true">order_detail_dialog
     <thead>
     <tr>
         <th field="id" width="30">编号</th>
@@ -34,7 +34,7 @@
         <th field="orderDate" formatter="formatter_datetime" width="150">订购日期</th>
         <th field="address" width="150">送货地址</th>
         <th field="state" formatter="formatter_state" width="60">状态</th>
-        <th field="overview" width="70" formatter="handler">操作</th>
+        <th field="handler" width="70" formatter="handler">操作</th>
     </tr>
     </thead>
 </table>

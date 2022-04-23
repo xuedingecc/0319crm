@@ -12,23 +12,22 @@ $('#system_index_update_password_dialog').dialog({
         iconCls: 'icon-save',
         handler: function () {
             var flag = $('#system_index_update_password_form').form('validate');
-            console.log(flag)
             if (flag) {
                 // 提交表单
                 sub_system_index_updatepwd_form();
 
                 // 清除form表单input
-                // $('#system_index_update_password_form input').val('');
+                $('#system_index_update_password_form input').val('');
 
                 // 关闭修改密码dialog
-                // $('#system_index_update_password_dialog').dialog('close');
+                $('#system_index_update_password_dialog').dialog('close');
             }
         }
     }, {
         text: '关闭',
         iconCls: 'icon-cancel',
         handler: function () {
-            // $('#system_index_update_password_dialog').dialog('close');
+            $('#system_index_update_password_dialog').dialog('close');
         }
     }]
 });
@@ -43,32 +42,31 @@ function sub_system_index_updatepwd_form() {
     // 给csrf_token隐藏域赋值
     $('#csrfmiddlewaretoken').val($.cookie('csrftoken'));
 
-    $('#system_index_update_password_form').form({
+    $('#system_index_update_password_form').form('submit', {
         url: '/system/update_password/',
         success: function (result) {
-            alert(result)
-            // var obj = JSON.parse(result);
-            //
-            // // 显示提示信息
-            // $.messager.show({
-            //     title: '提示',
-            //     msg: obj.msg,
-            //     timeout: 5000
-            // });
-            //
-            // // 退出系统，清除cookie，清除session
-            // if (200 == obj.code) {
-            //     // 前台清除cookie
-            //     $.removeCookie('login_cookie',
-            //         {'expires': 15, 'path': '/'});
-            //
-            //     // 后台清除session
-            //
-            //     // 为了保证用户可以看到提示信息，我们要延迟执行
-            //     setTimeout(function () {
-            //         window.location.href = '/system/logout/'
-            //     }, 2000);
-            // }
+            var obj = JSON.parse(result);
+
+            // 显示提示信息
+            $.messager.show({
+                title: '提示',
+                msg: obj.msg,
+                timeout: 5000
+            });
+
+            // 退出系统，清除cookie，清除session
+            if (200 == obj.code) {
+                // 前台清除cookie
+                $.removeCookie('login_cookie',
+                    {'expires': 15, 'path': '/'});
+
+                // 后台清除session
+
+                // 为了保证用户可以看到提示信息，我们要延迟执行
+                setTimeout(function () {
+                    window.location.href = '/system/logout/'
+                }, 2000);
+            }
         }
     });
 }
@@ -102,7 +100,7 @@ function openTab(title, url, iconCls) {
             closable: true,  // 是否可以关闭
             // href: '/sales/sale_chance_index/',  // 跳转请求打开对应的页面，样式会出问题
             // 新增一个iframe窗口
-            // content: "<iframe frameborder=0 scrolling='auto' style='width:99%;height:99%' src='" + url + "'></iframe>",
+            content: "<iframe frameborder=0 scrolling='auto' style='width:99%;height:99%' src='" + url + "'></iframe>",
         });
     }
 }

@@ -1,3 +1,19 @@
+function select_user() {
+    // 获取参数
+    var name = $('#s_username').val().trim();
+    $('#dg').datagrid('reload', {
+        name: name
+    });
+}
+
+// 格式化时间
+function formatter_datetime(value) {
+    if (undefined == value || null == value)
+        return '';
+
+    return value.replace('T', ' ');
+}
+
 // 打开添加用户对话框
 function open_user_create_dialgo() {
     // 添加密码必填样式
@@ -80,16 +96,16 @@ function save_user() {
             }
 
             // 获取roles的所有角色值
-            /*var role_arr = $('#roles').combobox('getValues');
+            // var role_arr = $('#roles').combobox('getValues');
             // 循环拼接赋值给隐藏域发往后台
-            var role_hidden = '';
-            for (var i = 0; i < role_arr.length; i++) {
-                if (i != role_arr.length - 1)
-                    role_hidden += role_arr[i] + ',';
-                else
-                    role_hidden += role_arr[i];
-            }
-            $('#roles_hidden').val(role_hidden);*/
+            // var role_hidden = '';
+            // for (var i = 0; i < role_arr.length; i++) {
+            //     if (i != role_arr.length - 1)
+            //         role_hidden += role_arr[i] + ',';
+            //     else
+            //         role_hidden += role_arr[i];
+            // }
+            // $('#roles_hidden').val(role_hidden);
 
             // 验证所有form的必填项
             return $('#fm').form('validate');

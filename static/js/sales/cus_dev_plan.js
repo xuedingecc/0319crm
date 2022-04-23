@@ -35,13 +35,13 @@ function handler(value, row, index) {
 // 开发客户
 function develop(sale_chance_id) {
     // 打开一个新窗口
-    window.parent.openTab('开发客户', '/sales/select_sale_chance_by_id_for_page/' + sale_chance_id + '/?flag=1', 'icon-khkfjh');
+    window.parent.openTab('开发客户', '/sales/select_sale_chance_by_id_for_page/?sale_chance_id=' + sale_chance_id + '&flag=1', 'icon-khkfjh');
 }
 
 // 查看详情
 function detail(sale_chance_id) {
     // 打开一个新窗口
-    window.parent.openTab('查看详情', '/sales/select_sale_chance_by_id_for_page/' + sale_chance_id + '/?flag=0', 'icon-khkfjh');
+    window.parent.openTab('查看详情', '/sales/select_sale_chance_by_id_for_page/?sale_chance_id=' + sale_chance_id + '&flag=0', 'icon-khkfjh');
 }
 
 // 按条件查询营销机会

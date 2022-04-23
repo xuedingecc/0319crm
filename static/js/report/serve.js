@@ -9,8 +9,8 @@ $(function () {
             // 获取数据进行赋值
             for (i = 0; i < result.length; i++) {
                 var options = {
-                    name: result[i].serveType,
-                    y: result[i].amount
+                    name: result[i]['serveType'],
+                    y: result[i]['amount']
                 }
 
                 // 如果是投诉，选中

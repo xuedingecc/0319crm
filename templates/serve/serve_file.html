@@ -15,7 +15,7 @@
 <table id="dg" class="easyui-datagrid" title="服务归档管理"
        data-options="rownumbers:true,pagination:true,fit:true,
 			    pageList:[10,15,20,30,40,50],toolbar: '#tb',
-                url:'{% url 'serve:select_serve' %}?state=已反馈',method:'get'">
+                url:'{% url 'serve:select_serve' %}?state=已归档',method:'get'">
     <thead>
     <tr>
         <th data-options="field:'id',checkbox:true"></th>
@@ -47,13 +47,13 @@
     </div>
 </div>
 
-{# 分配反馈对话框 #}
+{# 归档查看客户服务详情框 #}
 <div id="dialog" class="easyui-dialog" iconCls="icon-fwgd">
     <br/>
     <form id="fm" method="post">
         <input type="hidden" id="csrfmiddlewaretoken" name="csrfmiddlewaretoken"/>
         <input type="hidden" name="id"/>
-        <input type="hidden" name="state" value="已处理"/>
+        <input type="hidden" name="state" value="已归档"/>
         <label style="padding-right: 12px;padding-left: 30px">服务类型</label>
         <input id="serveType" name="serveType" readonly/>
         <label style="padding-right: 10px;padding-left: 10px">客户名称</label>
